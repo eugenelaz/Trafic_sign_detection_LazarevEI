@@ -1,0 +1,399 @@
+(venv) PS X:\detection_project_5> cd yolov5
+(venv) PS X:\detection_project_5\yolov5> python train.py --img 1280 --batch 3 --epochs 40 --data X:\detection_project_5\trafic_sings.yaml --weights yolov5m6.pt --project hackaton_trafic_signs --name yolov5m
+6
+train: weights=yolov5m6.pt, cfg=, data=X:\detection_project_5\trafic_sings.yaml, hyp=data\hyps\hyp.scratch-low.yaml, epochs=40, batch_size=3, imgsz=1280, rect=False, resume=False, nosave=False, noval=False,
+ noautoanchor=False, noplots=False, evolve=None, bucket=, cache=None, image_weights=False, device=, multi_scale=False, single_cls=False, optimizer=SGD, sync_bn=False, workers=8, project=hackaton_trafic_sign
+s, name=yolov5m6, exist_ok=False, quad=False, cos_lr=False, label_smoothing=0.0, patience=100, freeze=[0], save_period=-1, seed=0, local_rank=-1, entity=None, upload_dataset=False, bbox_interval=-1, artifac
+t_alias=latest
+github: up to date with https://github.com/ultralytics/yolov5 
+YOLOv5  v7.0-160-g867f7f0 Python-3.9.13 torch-2.0.0+cu117 CUDA:0 (NVIDIA GeForce RTX 3060 Laptop GPU, 6144MiB)
+
+hyperparameters: lr0=0.01, lrf=0.01, momentum=0.937, weight_decay=0.0005, warmup_epochs=3.0, warmup_momentum=0.8, warmup_bias_lr=0.1, box=0.05, cls=0.5, cls_pw=1.0, obj=1.0, obj_pw=1.0, iou_t=0.2, anchor_t=
+4.0, fl_gamma=0.0, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, degrees=0.0, translate=0.1, scale=0.5, shear=0.0, perspective=0.0, flipud=0.0, fliplr=0.5, mosaic=1.0, mixup=0.0, copy_paste=0.0
+ClearML: run 'pip install clearml' to automatically track, visualize and remotely train YOLOv5  in ClearML
+Comet: run 'pip install comet_ml' to automatically track and visualize YOLOv5  runs in Comet
+TensorBoard: Start with 'tensorboard --logdir hackaton_trafic_signs', view at http://localhost:6006/
+Overriding model.yaml nc=80 with nc=155
+
+                 from  n    params  module                                  arguments
+  0                -1  1      5280  models.common.Conv                      [3, 48, 6, 2, 2]
+  1                -1  1     41664  models.common.Conv                      [48, 96, 3, 2]
+  2                -1  2     65280  models.common.C3                        [96, 96, 2]
+  3                -1  1    166272  models.common.Conv                      [96, 192, 3, 2]
+  4                -1  4    444672  models.common.C3                        [192, 192, 4]
+  5                -1  1    664320  models.common.Conv                      [192, 384, 3, 2]
+  6                -1  6   2512896  models.common.C3                        [384, 384, 6]                 
+  7                -1  1   1991808  models.common.Conv                      [384, 576, 3, 2]
+  8                -1  2   2327040  models.common.C3                        [576, 576, 2]                 
+  9                -1  1   3982848  models.common.Conv                      [576, 768, 3, 2]              
+ 10                -1  2   4134912  models.common.C3                        [768, 768, 2]                 
+ 11                -1  1   1476864  models.common.SPPF                      [768, 768, 5]
+ 12                -1  1    443520  models.common.Conv                      [768, 576, 1, 1]
+ 29                -1  2   2437632  models.common.C3                        [768, 576, 2, False]
+ 30                -1  1   2987136  models.common.Conv                      [576, 576, 3, 2]
+ 31          [-1, 12]  1         0  models.common.Concat                    [1]
+ 32                -1  2   4429824  models.common.C3                        [1152, 768, 2, False]
+ 33  [23, 26, 29, 32]  1    923520  models.yolo.Detect                      [155, [[19, 27, 44, 40, 38, 94], [96, 68, 86, 152, 180, 137], [140, 301, 303, 264, 238, 542], [436, 615, 739, 380, 925, 792]], [19
+2, 384, 576, 768]]
+Model summary: 379 layers, 36164832 parameters, 36164832 gradients, 51.3 GFLOPs
+
+Transferred 619/627 items from yolov5m6.pt
+AMP: checks passed
+optimizer: SGD(lr=0.01) with parameter groups 103 weight(decay=0.0), 107 weight(decay=0.0004921875), 107 bias
+train: Scanning X:\detection_project_4\train_annotation\labels.cache... 54188 images, 0 backgrounds, 0 corrupt: 100%|██████████| 54188/54188 [00:00<?, ?it/s]
+val: Scanning X:\detection_project_4\test_annotation\labels.cache... 5000 images, 0 backgrounds, 0 corrupt: 100%|██████████| 5000/5000 [00:00<?, ?it/s]
+
+AutoAnchor: 3.85 anchors/target, 1.000 Best Possible Recall (BPR). Current anchors are a good fit to dataset
+Plotting labels to hackaton_trafic_signs\yolov5m63\labels.jpg...
+Image sizes 1280 train, 1280 val
+Using 3 dataloader workers
+Logging results to hackaton_trafic_signs\yolov5m63
+Starting training for 40 epochs...
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       0/39      4.89G    0.02377    0.01001    0.04389          7       1280: 100%|██████████| 18063/18063 [1:24:41<00:00,  3.55it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [02:02<00:00,  6.83it/s]
+                   all       5000       8866      0.951     0.0761      0.088     0.0604
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       1/39      5.12G    0.02098   0.005835    0.02489          4       1280: 100%|██████████| 18063/18063 [1:22:59<00:00,  3.63it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [02:00<00:00,  6.91it/s]
+                   all       5000       8866      0.918      0.174      0.199      0.144
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       2/39      5.12G    0.02008   0.005627     0.0185          8       1280: 100%|██████████| 18063/18063 [1:22:36<00:00,  3.64it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [02:01<00:00,  6.87it/s]
+                   all       5000       8866      0.843      0.249      0.258      0.186
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       3/39      5.12G    0.01805   0.005505    0.01564          5       1280: 100%|██████████| 18063/18063 [1:22:35<00:00,  3.64it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [02:00<00:00,  6.94it/s]
+                   all       5000       8866      0.806      0.323      0.339      0.249
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       4/39      5.12G    0.01685   0.005277    0.01315          2       1280: 100%|██████████| 18063/18063 [1:22:28<00:00,  3.65it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  6.96it/s]
+                   all       5000       8866      0.796      0.385      0.398      0.294
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       5/39      5.12G    0.01629   0.005171    0.01162          2       1280: 100%|██████████| 18063/18063 [1:22:30<00:00,  3.65it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  6.96it/s]
+                   all       5000       8866      0.797      0.421      0.439      0.326
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       6/39      5.12G    0.01587   0.004991    0.01033          1       1280: 100%|██████████| 18063/18063 [1:22:49<00:00,  3.63it/s]  
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  6.98it/s]
+                   all       5000       8866      0.828      0.442      0.471      0.352
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       7/39      5.12G    0.01568   0.004986   0.009711          4       1280: 100%|██████████| 18063/18063 [1:22:47<00:00,  3.64it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  6.96it/s]
+                   all       5000       8866       0.82      0.462      0.501      0.376
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       8/39      5.12G    0.01543   0.004923   0.009014         10       1280: 100%|██████████| 18063/18063 [1:22:50<00:00,  3.63it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  6.97it/s]
+                   all       5000       8866      0.806      0.494      0.536      0.405
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       9/39      5.12G    0.01527   0.004909   0.008572         15       1280: 100%|██████████| 18063/18063 [1:22:50<00:00,  3.63it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  6.95it/s]
+                   all       5000       8866      0.794      0.521      0.561      0.424
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      10/39      5.12G    0.01509   0.004877   0.008096          5       1280: 100%|██████████| 18063/18063 [1:22:44<00:00,  3.64it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  6.95it/s]
+                   all       5000       8866       0.81      0.532      0.582       0.44
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      11/39      5.12G    0.01496   0.004817   0.007686          5       1280: 100%|██████████| 18063/18063 [1:22:43<00:00,  3.64it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  6.99it/s]
+                   all       5000       8866      0.811      0.548      0.601      0.454
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      12/39      5.12G    0.01492   0.004826   0.007455          6       1280: 100%|██████████| 18063/18063 [1:22:43<00:00,  3.64it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  6.98it/s]
+                   all       5000       8866      0.815      0.555      0.616      0.466
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      13/39      5.12G    0.01466   0.004744   0.006997          8       1280: 100%|██████████| 18063/18063 [1:22:40<00:00,  3.64it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  6.96it/s]
+                   all       5000       8866      0.802      0.568      0.624      0.475
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      14/39      5.12G    0.01456   0.004698   0.006664          5       1280: 100%|██████████| 18063/18063 [1:22:41<00:00,  3.64it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  6.99it/s]
+                   all       5000       8866      0.822      0.566      0.637      0.486
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      15/39      5.12G    0.01439   0.004663    0.00638          7       1280: 100%|██████████| 18063/18063 [1:22:40<00:00,  3.64it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  6.96it/s]
+                   all       5000       8866      0.811      0.582      0.646      0.494
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      16/39      5.12G    0.01426   0.004647   0.006302          8       1280: 100%|██████████| 18063/18063 [1:23:07<00:00,  3.62it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:58<00:00,  7.05it/s]
+                   all       5000       8866       0.79        0.6      0.654        0.5
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      17/39      5.12G    0.01419   0.004637   0.006103          3       1280: 100%|██████████| 18063/18063 [1:23:06<00:00,  3.62it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:58<00:00,  7.05it/s]
+                   all       5000       8866      0.795      0.608      0.662      0.506
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      18/39      5.12G    0.01402   0.004596   0.005977         13       1280: 100%|██████████| 18063/18063 [1:23:05<00:00,  3.62it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:58<00:00,  7.04it/s]
+                   all       5000       8866      0.799       0.61       0.67      0.513
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      19/39      5.12G    0.01395   0.004585   0.005732          6       1280: 100%|██████████| 18063/18063 [1:23:03<00:00,  3.62it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:58<00:00,  7.05it/s]
+                   all       5000       8866      0.798      0.625      0.678       0.52
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      20/39      5.12G    0.01386   0.004592   0.005648          7       1280: 100%|██████████| 18063/18063 [1:23:10<00:00,  3.62it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:58<00:00,  7.02it/s]
+                   all       5000       8866      0.788      0.635      0.688      0.527
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      21/39      5.12G    0.01378   0.004579   0.005525          8       1280: 100%|██████████| 18063/18063 [1:23:06<00:00,  3.62it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:58<00:00,  7.03it/s]
+                   all       5000       8866      0.776      0.647      0.692      0.531
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      22/39      5.12G    0.01358   0.004481   0.005072          2       1280: 100%|██████████| 18063/18063 [1:23:01<00:00,  3.63it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:58<00:00,  7.02it/s]
+                   all       5000       8866      0.785      0.657      0.699      0.537
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      23/39      5.12G    0.01341   0.004466   0.004896          4       1280: 100%|██████████| 18063/18063 [1:23:10<00:00,  3.62it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [02:00<00:00,  6.94it/s]
+                   all       5000       8866       0.79      0.666      0.712      0.548
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      24/39      5.12G    0.01323   0.004417   0.004721          9       1280: 100%|██████████| 18063/18063 [1:24:18<00:00,  3.57it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:58<00:00,  7.02it/s]
+                   all       5000       8866      0.802      0.666      0.719      0.554
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      25/39      5.12G    0.01308   0.004394   0.004691          3       1280: 100%|██████████| 18063/18063 [1:23:12<00:00,  3.62it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:58<00:00,  7.03it/s]
+                   all       5000       8866      0.802      0.677      0.729      0.561
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      26/39      5.12G    0.01288   0.004355   0.004343          5       1280: 100%|██████████| 18063/18063 [1:23:10<00:00,  3.62it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:58<00:00,  7.04it/s]
+                   all       5000       8866      0.807      0.681      0.736      0.567
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      27/39      5.12G    0.01271   0.004334   0.004229          5       1280: 100%|██████████| 18063/18063 [1:23:11<00:00,  3.62it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:58<00:00,  7.02it/s]
+                   all       5000       8866      0.814      0.677      0.741      0.571
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      28/39      5.12G    0.01263   0.004306   0.004187         17       1280: 100%|██████████| 18063/18063 [1:23:17<00:00,  3.61it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:58<00:00,  7.04it/s]
+                   all       5000       8866      0.815      0.681      0.752      0.581
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      29/39      5.12G    0.01238   0.004267   0.004055          2       1280: 100%|██████████| 18063/18063 [1:23:20<00:00,  3.61it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:58<00:00,  7.02it/s]
+                   all       5000       8866      0.813      0.687      0.759      0.587
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      30/39      5.12G    0.01217   0.004272   0.003873          3       1280: 100%|██████████| 18063/18063 [1:23:14<00:00,  3.62it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:58<00:00,  7.01it/s]
+                   all       5000       8866      0.825       0.69      0.769      0.595
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      31/39      5.12G    0.01199   0.004189   0.003746          4       1280: 100%|██████████| 18063/18063 [1:23:13<00:00,  3.62it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  6.98it/s]
+                   all       5000       8866      0.834      0.695      0.774      0.599
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      32/39      5.12G    0.01171   0.004154   0.003483          8       1280: 100%|██████████| 18063/18063 [1:22:51<00:00,  3.63it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  6.99it/s]
+                   all       5000       8866      0.842      0.698      0.781      0.605
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      33/39      5.12G    0.01151   0.004125    0.00332          9       1280: 100%|██████████| 18063/18063 [1:22:43<00:00,  3.64it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:58<00:00,  7.01it/s]
+                   all       5000       8866      0.852       0.69       0.79      0.613
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      34/39      5.12G    0.01126    0.00408   0.003232          5       1280: 100%|██████████| 18063/18063 [1:22:53<00:00,  3.63it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  7.00it/s]
+                   all       5000       8866      0.856      0.692      0.799       0.62
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      35/39      5.12G    0.01103    0.00401   0.002997         13       1280: 100%|██████████| 18063/18063 [1:22:38<00:00,  3.64it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  7.00it/s]
+                   all       5000       8866      0.763       0.76      0.804      0.624
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      36/39      5.12G     0.0107   0.003973   0.002906          4       1280: 100%|██████████| 18063/18063 [1:22:37<00:00,  3.64it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  7.00it/s]
+                   all       5000       8866       0.77      0.762      0.815      0.633
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      37/39      5.12G    0.01043   0.003917   0.002678         10       1280: 100%|██████████| 18063/18063 [1:22:35<00:00,  3.64it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  7.00it/s]
+                   all       5000       8866      0.773      0.777      0.822      0.639
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      38/39      5.12G     0.0101   0.003904   0.002546          5       1280: 100%|██████████| 18063/18063 [1:22:28<00:00,  3.65it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  7.01it/s]
+                   all       5000       8866      0.779      0.776      0.832      0.647
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      39/39      5.12G   0.009761   0.003864   0.002397         10       1280: 100%|██████████| 18063/18063 [1:22:28<00:00,  3.65it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [01:59<00:00,  6.99it/s]
+                   all       5000       8866      0.784      0.781      0.838      0.653
+
+40 epochs completed in 56.650 hours.
+Optimizer stripped from hackaton_trafic_signs\yolov5m63\weights\last.pt, 73.2MB
+Optimizer stripped from hackaton_trafic_signs\yolov5m63\weights\best.pt, 73.2MB
+
+Validating hackaton_trafic_signs\yolov5m63\weights\best.pt...
+Fusing layers... 
+Model summary: 276 layers, 36137808 parameters, 0 gradients, 50.9 GFLOPs
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 834/834 [02:04<00:00,  6.70it/s]
+                   all       5000       8866      0.784      0.781      0.838      0.653
+                   2_1       5000        934      0.912      0.994       0.99      0.798
+                  1_23       5000        229      0.908      0.996      0.988      0.789
+                  1_17       5000        107      0.851          1      0.993      0.735
+                  3_24       5000        343      0.808      0.991      0.982      0.778
+                 8_2_1       5000         74      0.593      0.986      0.896      0.688
+                  5_20       5000        154      0.849      0.987      0.975      0.772
+                5_19_1       5000       2117      0.851      0.991      0.976      0.749
+                  5_16       5000        445      0.854      0.991      0.985      0.731
+                  3_25       5000         10      0.819          1      0.995      0.776
+                  6_16       5000         97      0.836      0.979      0.967      0.715
+                  7_15       5000          3          1          0      0.557      0.488
+                   2_2       5000         47       0.87      0.957      0.968      0.803
+                   2_4       5000        340      0.879      0.983       0.99      0.769
+                8_13_1       5000         14      0.724          1      0.981      0.726
+                 4_2_1       5000        120      0.862      0.975       0.94      0.694
+                1_20_3       5000         11      0.444      0.273       0.46      0.344
+                  1_25       5000         89      0.804          1       0.98      0.754
+                   3_4       5000          1      0.805          1      0.995      0.796
+                 8_3_2       5000          5      0.209        0.8      0.285      0.172
+                 3_4_1       5000         50      0.793          1      0.982      0.743
+                 4_1_6       5000         11      0.927          1      0.995      0.775
+                 4_2_3       5000         76      0.915          1      0.992      0.765
+                 4_1_1       5000        196      0.886      0.995      0.986      0.767
+                  1_33       5000          5      0.753          1      0.995      0.819
+                5_15_5       5000        108      0.964          1      0.994      0.766
+                  3_27       5000        290      0.861      0.993      0.983      0.768
+                  1_15       5000         12      0.681          1      0.944      0.749
+               4_1_2_1       5000         14      0.725      0.929      0.949      0.661
+                 6_3_1       5000         20      0.822          1      0.995      0.767
+                 8_1_1       5000         13      0.461          1      0.893      0.712
+                   6_7       5000          9      0.676          1      0.995      0.824
+                5_15_3       5000        144      0.888      0.991      0.991      0.787
+                   7_3       5000         93       0.91          1      0.993      0.773
+                  1_19       5000          5       0.81          1      0.995      0.837
+                   6_4       5000         96      0.829       0.99      0.978      0.745
+                 8_1_4       5000          2          1          0     0.0442     0.0354
+                   8_8       5000          5          1          0      0.608        0.5
+                  1_16       5000         31      0.771          1      0.988      0.762
+                1_11_1       5000         36      0.478      0.972      0.602      0.431
+                   6_6       5000         67      0.833      0.985      0.968      0.717
+                5_15_1       5000        131      0.908      0.979      0.986      0.797
+                   7_2       5000         15      0.685          1      0.995      0.869
+                5_15_2       5000        440      0.866      0.993      0.986       0.76
+                  7_12       5000          7       0.55          1      0.995      0.795
+                  3_18       5000         20      0.758       0.95      0.939      0.708
+                   5_6       5000         60      0.942          1      0.983      0.772
+                   5_5       5000         81      0.826          1       0.99      0.761
+                   7_4       5000         11      0.767          1      0.988      0.826
+                 4_1_2       5000         44      0.724      0.977      0.939      0.707
+                 8_2_2       5000         16      0.789          1      0.976      0.745
+                  7_11       5000         12      0.826          1      0.984      0.831
+                  1_22       5000         77      0.859          1      0.987      0.774
+                  1_27       5000          7      0.792      0.857       0.87      0.722
+                 2_3_2       5000         85      0.517      0.988      0.712      0.513
+              5_15_2_2       5000        116      0.888          1      0.985      0.836
+                   1_8       5000         27       0.91          1      0.995      0.714
+                  3_13       5000         21      0.763          1      0.991      0.782
+                   2_3       5000         22      0.797          1      0.968      0.768
+                 2_3_3       5000         58      0.362      0.948      0.619      0.494
+                   7_7       5000         14      0.775          1      0.995      0.794
+                  1_11       5000         35      0.473      0.971      0.537      0.372
+                  8_13       5000         47      0.798          1      0.989      0.765
+                1_12_2       5000         16      0.446          1      0.756      0.607
+                  1_20       5000         12      0.925          1      0.995      0.737
+                  1_12       5000         20      0.554      0.996      0.573      0.436
+                  3_32       5000          7      0.901          1      0.995      0.846
+                   2_5       5000         49      0.845          1      0.993      0.816
+                   3_1       5000         86      0.726      0.965      0.928      0.667
+                 4_8_2       5000          5      0.833          1      0.995      0.868
+                  3_20       5000        142      0.923          1      0.994      0.778
+                   3_2       5000         15      0.937      0.996      0.979      0.741
+                 2_3_6       5000          1          1          0      0.995      0.895
+                  5_18       5000          3          1          0      0.352      0.247
+                   7_5       5000         30      0.746          1      0.991      0.827
+                 8_4_1       5000          5      0.547        0.8      0.673      0.477
+                  3_14       5000          3          1          0      0.995      0.895
+                   1_2       5000         32      0.842          1      0.991      0.797
+                1_20_2       5000         37      0.588      0.973      0.892      0.689
+                 4_1_4       5000        103      0.809          1      0.968      0.774
+                   7_6       5000          5          1      0.986      0.995      0.808
+                 8_1_3       5000          4          1          0      0.127     0.0922
+                 8_3_1       5000         16      0.507      0.938      0.683        0.5
+                   4_3       5000         16      0.941      0.998      0.984      0.726
+                 4_1_5       5000         16      0.794      0.875      0.937      0.768
+                 8_2_3       5000          7      0.429          1      0.943       0.69
+                 8_2_4       5000          8       0.57       0.83      0.822      0.662
+                  1_31       5000          3          1          0      0.566      0.456
+                  3_10       5000          3      0.713       0.85      0.913      0.681
+                 4_2_2       5000         41      0.812          1       0.99      0.745
+                   7_1       5000          5      0.873          1      0.995      0.736
+                  3_28       5000         34      0.947      0.941      0.982      0.742
+                 4_1_3       5000          7      0.869      0.857      0.898      0.831
+                   5_3       5000          4      0.816          1      0.995      0.752
+                  3_31       5000         15      0.875      0.936      0.988      0.846
+                   6_2       5000         13      0.818          1      0.956      0.772
+                  1_21       5000          7       0.81      0.857      0.861      0.633
+                  3_21       5000         45      0.897          1      0.995      0.801
+                  1_13       5000          6      0.411          1      0.426      0.311
+                  1_14       5000          9      0.536      0.889      0.849      0.555
+                 2_3_4       5000          1          1          0      0.199      0.179
+                3_18_2       5000         22      0.915      0.955      0.957      0.771
+               4_1_2_2       5000         11      0.633          1      0.981      0.797
+                   1_7       5000          2          1          0     0.0905     0.0601
+                  3_19       5000          5      0.843          1      0.995      0.726
+                  1_18       5000          2          1          0      0.828      0.596
+                   2_7       5000          1          1          0     0.0498     0.0448
+                 8_5_4       5000          7      0.616      0.857      0.757      0.628
+                5_15_7       5000         45      0.951      0.956      0.956      0.821
+                  5_14       5000         27      0.659          1      0.961      0.741
+                  5_21       5000          6      0.893          1      0.995      0.591
+                   1_1       5000          3       0.27          1      0.995      0.797
+                6_15_1       5000         13       0.55          1      0.878      0.646
+                 8_6_4       5000          5      0.353      0.141      0.719      0.553
+                  8_15       5000         21      0.515      0.952      0.921        0.7
+                  3_11       5000          3      0.374       0.61      0.426      0.318
+                  8_18       5000          2        0.9          1      0.995      0.746
+                 8_4_4       5000          4          1          0      0.788      0.482
+                  3_30       5000          6      0.402          1      0.995      0.687
+                 5_7_1       5000          8      0.311          1      0.702      0.438
+                 5_7_2       5000         11      0.504          1      0.927      0.722
+                   1_5       5000          7      0.798          1      0.995      0.748
+                  3_29       5000         10      0.612          1      0.875      0.656
+                  5_12       5000          1          1          0      0.995      0.895
+                  5_11       5000          5      0.861          1      0.995      0.746
+                 8_6_2       5000          2          1          0        0.3      0.219
+                  3_12       5000          2      0.398        0.5       0.62      0.546
+                 8_4_3       5000          3          1          0      0.178      0.111
+                   5_8       5000          6          1      0.862      0.995      0.851
+                  8_17       5000          2          1          0      0.208      0.166
+                   3_6       5000          3          1          0       0.56      0.482
+                  1_26       5000          1          1          0     0.0711     0.0426
+                 8_5_2       5000          3      0.427      0.667       0.83      0.416
+                 6_8_1       5000          1          1          0      0.166      0.116
+                  5_17       5000          1          1          0      0.995      0.697
+                  1_10       5000          4          1          0      0.845      0.708
+                  7_18       5000          1          1          0      0.124      0.112
+                  7_14       5000          2          1          0      0.497      0.497
+Results saved to hackaton_trafic_signs\yolov5m63
